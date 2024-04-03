@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAPTCHA</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        img {
+        margin: 10px;
+        border: 5px solid #555;
+        width: 10%;
+        }
+       .flex {
+       display: flex;
+       justify-content: center;
+       }
+        .selected {
+       border: 5px solid rgb(0, 195, 255);
+       }
+       p {
+       text-align: center;
+       }
+       button {
+       margin: 20px;
+       }
+    </style>
+   
+</head>
+<body>
+    <h2>CAPTCHA</h2>
+    <p>Please check the box below and enter the code displayed in the image.</p>
+    <div>
+        <input type="checkbox" id="captcha-checkbox" onchange="displayRandomImage()">
+        <label for="captcha-checkbox">I am not a robot</label>
+    </div>
+    <div>
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat1.jpeg" alt="Captcha Image" style="height: 150px; width: 150px;">
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat2.jpg" alt="Captcha Image" style="height: 150px; width: 150px;">
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat3.jpg" alt="Captcha Image" style="height: 150px; width: 150px;"> <br> 
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat4.jpg" alt="Captcha Image" style="height: 150px; width: 150px;">
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat5.jpg" alt="Captcha Image" style="height: 150px; width: 150px;">
+        <img id="captcha-image" src="C:\Users\LENOVO-V15\Desktop\cat6.jpg" alt="Captcha Image" style="height: 150px; width: 150px;">
+    </div>
+    <div>
+        <button onclick="validateCaptcha()">Submit</button>
+    </div>
+    <script>
+        var images = [
+            "image.jpg", 
+        ];
+        function displayRandomImage() {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var imageUrl = images[randomIndex];
+            var captchaImage = document.getElementById("captcha-image");
+            captchaImage.src = imageUrl;
+        }
+
+        function validateCaptcha() {
+            var userInput = document.getElementById("captcha-input").value;
+            var expectedValue = "some_value"; 
+            if (userInput === expectedValue) {
+                alert("Captcha is correct!");
+            } else {
+                alert("Captcha is incorrect. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
